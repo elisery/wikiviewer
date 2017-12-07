@@ -1,3 +1,4 @@
+/*Universal styles*/
 html {
   font-size: 16px;
   font-family: 'Calibri', sans-serif;
@@ -19,10 +20,12 @@ h5 {
   padding: 0.75rem;
 }
 
-p {
-  padding: 0.75rem;
+a {
+  color: white;
+  text-decoration: none;
 }
 
+/*Main body*/
 .main {
   height: 100%;
   width: 100%;
@@ -30,4 +33,38 @@ p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+/*Random Article Link*/
+
+/*Search Bar*/
+.search-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-field {
+  display: block;
+  align-items: center;
+  padding: 0.75rem;
+}
+
+i {
+  color: #FFF78D;
+}
+
+#text-box {
+  /*width: 250px;*/
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 1rem;
+  padding: 0.25rem;
+  /*display: none;*/
+  /*outline-color: #FFF78D;*/
+  outline: none;
+  border: 3px solid #FFF78D;
+  border-radius: 2em;
+  background-color: #4A5180;
 }
