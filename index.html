@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link href="./resources/css/reset.css" type="text/css" rel="stylesheet" />
     <link href="./resources/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="./resources/images/favicon.ico" type="image/png" rel="icon"  />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <title>Elise's Wikipedia Viewer</title>
   </head>
@@ -14,10 +15,17 @@
       </div>
       <div class="search-bar">
         <div class="input-field">
-          <!--i class="fa fa-search fa-2x" aria-hidden="true"--><input type="text" id="text-box" /><!--/i-->
+          <!--i class="fa fa-search fa-2x" aria-hidden="true" id="magnifier"></i-->
+          <form>
+            <input type="search" id="text-box" />
+            <input type="submit" style="display: none" />
+          </form>
         </div>
         <div class="instruction">
-          <h5>Click icon to search</h5>
+          <h5>Click circle to search</h5>
+        </div>
+        <div class="results">
+          <p>Results will go here</p>
         </div>
       </div>
     </div>
