@@ -9,10 +9,17 @@ html {
 
 body {
   height: 100%;
+  display: flex;
 }
 
 div {
   border: 1px solid white;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0.5rem 0rem 0.5rem 0rem;
 }
 
 h5 {
@@ -27,12 +34,14 @@ a {
 
 /*Main body*/
 .main {
-  height: 100%;
+  height: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content:  center; /*change to flex-start on submit search*/
+  border: 1px solid red;
+  padding: 1rem;
 }
 
 /*Random Article Link*/
@@ -71,4 +80,12 @@ i {
 /*Search results*/
 .results {
   padding: 0.75rem;
+}
+
+li {
+  background-color: #F0F0F3;
+  color: black;
+  width: 100%;
+  margin: 1rem;
+  padding: 1rem;
 }

@@ -23,17 +23,25 @@ $(document).ready(function() {
       //Construct query URL
       let endpoint = `http://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${queryValue}`;
       console.log('This is the query value ' + queryValue);
-      //Send JSON GET request to Wikipedia 
+      //Send JSON GET request to Wikipedia
       $.getJSON(endpoint, function(json) {
-        //console.log(json);
+        console.log(json);
         //$(".results").html(JSON.stringify(json)); //TEMPORARY
         //drill down to right object
         console.log('This is the right json ' + json.query.search[5].title);
         //for each 'search' object construct html of title followed by snippet
         //in unordered list. entire entry should be in an <a> tag
         let jsonArray = json.query.search;
+        let pageID = 0;
+        let pageTitle = '';
+        let pageSummary = '';
         jsonArray.forEach(entry => {
-          console.log(entry.title);
+          pageID = entry.pageid;
+          pageTitle = entry.title;
+          pageSummary = entry.snippet;
+          console.log(pageID + ' ' + pageTitle + ' ' + pageSummary);
+          $('ul').append('<a href="http://en.wikipedia.org/wiki?curid='+ pageID
+          + '" target="blank"><li><h2>' + pageTitle + '</h2><p>' + pageSummary + '</p></li></a>');
         });
       });
     }
@@ -42,17 +50,13 @@ $(document).ready(function() {
 
 });
 
-
 /*
 1. x- in search box changes search box back to magnifying glass
 2. x- in search box removes search results and moves search bar back to middle of
 page
-3. after typing, pressing enter submits search
-4. search results are in inserted as bars below the search bar
 5. after pressing enter, search bar is moved from middle to top of page
 6. deleting text in search bar does not refresh page
 7. entering new text and pressing enter
   a) removes previous results
   b) inserts new results
-8. search results are links to wikipedia pages
 */
