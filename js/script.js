@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  //Animate text box to expand on focus
+  //Animate text box to expand on click
   $('#text-box').on('click', function() {
     $(this).animate({width: '16rem'}, 'slow');
   }).blur(function() {
@@ -7,10 +7,9 @@ $(document).ready(function() {
     $(this).val('');
   });
 
-  //Fade magnifying glass on click - OPTIONAL
-  $('.fa-search').on('click', () => {
-    $('this').hide();
-    $('#text-box').css('display', inline);
+  $('input[type=search]').on('search', function () {
+    // this function will be executed on click of X (clear button)
+    $('ul').empty();
   });
 
   //Submit form
@@ -18,6 +17,8 @@ $(document).ready(function() {
     if (event.which == 13) {
       console.log('we got this far');
       event.preventDefault();
+      //Clear any results
+      $('ul').empty();
       //Get search query value
       let queryValue = $('#text-box').val();
       //Construct query URL
@@ -25,12 +26,10 @@ $(document).ready(function() {
       console.log('This is the query value ' + queryValue);
       //Send JSON GET request to Wikipedia
       $.getJSON(endpoint, function(json) {
-        console.log(json);
-        //$(".results").html(JSON.stringify(json)); //TEMPORARY
-        //drill down to right object
-        console.log('This is the right json ' + json.query.search[5].title);
+        //console.log('This is the right json ' + json.query.search[5].title);
+
         //for each 'search' object construct html of title followed by snippet
-        //in unordered list. entire entry should be in an <a> tag
+        //in unordered list in an <a> tag
         let jsonArray = json.query.search;
         let pageID = 0;
         let pageTitle = '';
@@ -42,21 +41,10 @@ $(document).ready(function() {
           console.log(pageID + ' ' + pageTitle + ' ' + pageSummary);
           $('ul').append('<a href="http://en.wikipedia.org/wiki?curid='+ pageID
           + '" target="blank"><li><h2>' + pageTitle + '</h2><p>' + pageSummary + '</p></li></a>');
-        });
-      });
-    }
+        }); //forEach
+      }); //getJSON
+    } //if
 
-  });
+  }); //input keypress event
 
-});
-
-/*
-1. x- in search box changes search box back to magnifying glass
-2. x- in search box removes search results and moves search bar back to middle of
-page
-5. after pressing enter, search bar is moved from middle to top of page
-6. deleting text in search bar does not refresh page
-7. entering new text and pressing enter
-  a) removes previous results
-  b) inserts new results
-*/
+}); //document ready
