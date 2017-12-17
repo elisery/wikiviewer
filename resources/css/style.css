@@ -39,7 +39,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content:  center;
+  justify-content:  center; /*Changes to flex-start when displaying search results*/
   border: 1px solid red;
   padding: 1rem;
 }

@@ -10,12 +10,13 @@ $(document).ready(function() {
   $('input[type=search]').on('search', function () {
     // this function will be executed on click of X (clear button)
     $('ul').empty();
+    //Move main content back to center of page
+    $('.main').css('justify-content', 'center');
   });
 
   //Submit form
   $('input').keypress(function(event) {
     if (event.which == 13) {
-      console.log('we got this far');
       event.preventDefault();
       //Clear any results
       $('ul').empty();
@@ -23,7 +24,6 @@ $(document).ready(function() {
       let queryValue = $('#text-box').val();
       //Construct query URL
       let endpoint = `http://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${queryValue}`;
-      console.log('This is the query value ' + queryValue);
       //Send JSON GET request to Wikipedia
       $.getJSON(endpoint, function(json) {
         //console.log('This is the right json ' + json.query.search[5].title);
@@ -38,7 +38,9 @@ $(document).ready(function() {
           pageID = entry.pageid;
           pageTitle = entry.title;
           pageSummary = entry.snippet;
-          console.log(pageID + ' ' + pageTitle + ' ' + pageSummary);
+          //Move main content to top of page
+          $('.main').css('justify-content', 'flex-start');
+
           $('ul').append('<a href="http://en.wikipedia.org/wiki?curid='+ pageID
           + '" target="blank"><li><h2>' + pageTitle + '</h2><p>' + pageSummary + '</p></li></a>');
         }); //forEach
