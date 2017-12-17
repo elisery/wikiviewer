@@ -23,7 +23,7 @@ $(document).ready(function() {
       //Get search query value
       let queryValue = $('#text-box').val();
       //Construct query URL
-      let endpoint = `http://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${queryValue}`;
+      let endpoint = `https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${queryValue}`;
       //Send JSON GET request to Wikipedia
       $.getJSON(endpoint, function(json) {
         //console.log('This is the right json ' + json.query.search[5].title);
