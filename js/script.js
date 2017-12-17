@@ -26,7 +26,7 @@ $(document).ready(function() {
       let endpoint = `http://cors.io/?u=https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&utf8=1&srsearch=${queryValue}`;
       //Send JSON GET request to Wikipedia
       $.getJSON(endpoint, function(json) {
-        //console.log('This is the right json ' + json.query.search[5].title);
+        //console.log('This is the right json' + json.query.search[5].title);
 
         //for each 'search' object construct html of title followed by snippet
         //in unordered list in an <a> tag
