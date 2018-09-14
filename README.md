@@ -1,5 +1,7 @@
 # WikiViewer
 
+<img src="resources/images/wiki.png" width="200" />
+
 This is a simple wikipedia viewer that uses the Wikipedia API. It was built to practice fetching from an API with user-provided keywords and formatting the results. 
 
 The current version can be viewed on GitHub pages at: 
